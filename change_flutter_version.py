@@ -46,13 +46,13 @@ def compare_versions(v1: str, v2s: str) -> bool:
 
 
 if __name__ == '__main__':
-    print("flutter version: ", get_version("flutter"))
-    print("dart version: ", get_version("dart"), "\n")
+    print("flutter version:", get_version("flutter"))
+    print("dart version:", get_version("dart"), "\n")
 
-    print("project flutter version: ", get_project_version("flutter"))
-    print("project dart version: ", get_project_version("dart"), "\n")
+    print("project flutter version:", get_project_version("flutter"))
+    print("project dart version:", get_project_version("dart"), "\n")
 
-    print("compare flutter versions: ", compare_versions(
+    print("compare flutter versions:", compare_versions(
         get_version("flutter"), get_project_version("flutter")))
-    print("compare dart versions: ", compare_versions(
+    print("compare dart versions:", compare_versions(
         get_version("dart"), get_project_version("dart")), "\n")
