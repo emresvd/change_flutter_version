@@ -37,13 +37,18 @@ def get_project_version(tool: str) -> str:
             return line.replace(tool, "").strip().strip('"')
 
 
-def compare_versions(v1: str, v2: str) -> bool:
-    delete = [str(x) for x in range(10)] + ["."]
-    operator = "".join([x for x in v2 if not x in delete])
+def compare_versions(v1: str, v2s: str) -> bool:
+    output = []
 
-    v2 = v2.strip(operator)
+    for v2 in v2s.split():
+        delete = [str(x) for x in range(10)] + ["."]
+        operator = "".join([x for x in v2 if not x in delete])
 
-    return ops[operator](version.parse(v1), version.parse(v2))
+        v2 = v2.strip(operator)
+
+        output.append(ops[operator](version.parse(v1), version.parse(v2)))
+
+    return not False in output
 
 
 def control_version(tool: str, project: bool) -> bool:
@@ -57,11 +62,10 @@ def control_version(tool: str, project: bool) -> bool:
 
 
 if __name__ == '__main__':
-    print("flutter version: ", get_version("flutter"))
-    print("dart version: ", get_version("dart"))
+    # print("flutter version: ", get_version("flutter"))
+    # print("dart version: ", get_version("dart"))
 
-    print("project flutter version: ", get_project_version("flutter"))
-    print("project dart version: ", get_project_version("dart"))
+    # print("project flutter version: ", get_project_version("flutter"))
+    # print("project dart version: ", get_project_version("dart"))
 
-    print("compare versions: ", compare_versions(
-        get_version("flutter"), get_project_version("flutter")))
+    print("compare versions: ", compare_versions("1.22.6", ">=1.16.0"))
