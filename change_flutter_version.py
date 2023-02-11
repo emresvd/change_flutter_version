@@ -43,6 +43,9 @@ def get_project_version(tool: str) -> str:
 def compare_versions(v1: str, v2s: str) -> bool:
     output = []
 
+    if not v2s:
+        return True
+
     for v2 in v2s.split():
         delete = [str(x) for x in range(10)] + ["."]
         operator = "".join([x for x in v2 if not x in delete])
@@ -65,12 +68,14 @@ def get_flutters():
 if __name__ == '__main__':
     flutter_version = get_version("flutter")
     dart_version = get_version("dart")
+    project_flutter_version = get_project_version("flutter")
+    project_dart_version = get_project_version("dart")
 
     print("flutter version:", flutter_version)
     print("dart version:", dart_version, "\n")
 
-    print("project flutter version:", get_project_version("flutter"))
-    print("project dart version:", get_project_version("dart"), "\n")
+    print("project flutter version:", project_flutter_version)
+    print("project dart version:", project_dart_version, "\n")
 
     compare_flutter = compare_versions(flutter_version, get_project_version("flutter"))
     compare_dart = compare_versions(dart_version, get_project_version("dart"))
