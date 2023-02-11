@@ -12,3 +12,4 @@ tool that fixes the version bug of the flutter projects you cloned
 6. from the terminal go to the flutter project
 7. run the `cfv` command
 
+![](images/ss2.png)
