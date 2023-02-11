@@ -11,3 +11,6 @@ tool that fixes the version bug of the flutter projects you cloned
 5. add cfv.exe to environment variables
 6. from the terminal go to the flutter project
 7. run the `cfv` command <br> ![](images/ss2.png)
+8. enter the number of the flutter version you want to use
+9. your flutter version will have changed
+
