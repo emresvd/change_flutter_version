@@ -91,9 +91,14 @@ if __name__ == '__main__':
             print(f"({a}) {name}:\n\tflutter version: {flutter_version}\n\tdart version: {dart_version}\n\n\tcompare flutter version: {compare_flutter}\n\tcompare dart version: {compare_dart}\n")
             a += 1
         
-        new_flutter = input("Enter the number of the flutter version you want to use: ")
+        new_flutter = input("enter the number of the flutter version you want to use: ")
         new_flutter = list(flutters.keys())[int(new_flutter) - 1].replace(f"{os.sep}bin{os.sep}flutter", "")
+
+        if new_flutter == main_flutter_path:
+            print("the flutter version you selected is the same as the current one")
+            exit()
+
         print("new flutter path:", new_flutter)
 
-        os.rename(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
-        os.rename(new_flutter, main_flutter_path)
+        # os.rename(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
+        # os.rename(new_flutter, main_flutter_path)
