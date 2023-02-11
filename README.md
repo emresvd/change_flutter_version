@@ -16,5 +16,6 @@ tool that fixes the version bug of the flutter projects you cloned
 
 ## build
 
-1. download requirements: `pip install -r requirements.txt`
-2. build project: `make`
+1. clone repository: `git clone https://github.com/emresvd/change_flutter_version.git`
+2. download requirements: `pip install -r requirements.txt`
+3. build project: `make`
