@@ -100,5 +100,5 @@ if __name__ == '__main__':
 
         print("new flutter path:", new_flutter)
 
-        # os.rename(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
-        # os.rename(new_flutter, main_flutter_path)
+        os.rename(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
+        os.rename(new_flutter, main_flutter_path)
