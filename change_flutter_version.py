@@ -11,12 +11,6 @@ ops = {
 }
 
 
-def returnable_exec(command):
-    exec('global i; i = %s' % command)
-    global i
-    return i
-
-
 def get_version(tool: str) -> str:
     tool = tool.capitalize()
     output = os.popen('flutter --version').read()
@@ -49,16 +43,6 @@ def compare_versions(v1: str, v2s: str) -> bool:
         output.append(ops[operator](version.parse(v1), version.parse(v2)))
 
     return not False in output
-
-
-def control_version(tool: str, project: bool) -> bool:
-    tool = tool.lower()
-
-    version = get_version(tool)
-    project_version = get_project_version(tool)
-
-    if project:
-        project_version = project_version.split()
 
 
 if __name__ == '__main__':
