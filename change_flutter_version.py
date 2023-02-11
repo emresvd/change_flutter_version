@@ -1,7 +1,6 @@
 from packaging import version
 import os
 import operator
-from pprint import pprint
 
 path = os\
     .popen("where flutter")\
@@ -62,9 +61,6 @@ def get_flutters():
 
 
 if __name__ == '__main__':
-    pprint(get_flutters())
-    quit()
-
     print("flutter version:", get_version("flutter"))
     print("dart version:", get_version("dart"), "\n")
 
@@ -80,4 +76,6 @@ if __name__ == '__main__':
     print("compare dart versions:", compare_dart, "\n")
 
     if not compare_flutter or not compare_dart:
-        pass
+        flutters = get_flutters()
+        for i in flutters:
+            print(f"{i}: flutter version: {flutters[i].split(',')[0]}, dart version: {flutters[i].split(',')[1]}")
