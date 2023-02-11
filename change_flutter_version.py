@@ -77,10 +77,10 @@ if __name__ == '__main__':
         flutters = get_flutters()
         for i in flutters:
             name = i.split(os.sep)[-3]
-            flutter_verson=flutters[i].split(',')[0]
-            dart_version=flutters[i].split(',')[1]
+            flutter_version = flutters[i].split(',')[0]
+            dart_version = flutters[i].split(',')[1]
 
             compare_flutter = compare_versions(get_version("flutter", i), get_project_version("flutter"))
             compare_dart = compare_versions(get_version("dart", i), get_project_version("dart"))
 
-            print(f"{}:\n\tflutter version: {}\tdart version: {}\tcompare flutter version")
+            print(f"{name}:\n\tflutter version: {flutter_version}\n\tdart version: {dart_version}\n\tcompare flutter version: {compare_flutter}\n\tcompare dart version: {compare_dart}\n")
