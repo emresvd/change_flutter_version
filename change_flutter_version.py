@@ -1,5 +1,14 @@
 from packaging import version
 import os
+import operator
+
+
+ops = {
+    "<": operator.lt,
+    "<=": operator.le,
+    ">=": operator.ge,
+    ">": operator.gt,
+}
 
 
 def returnable_exec(command):
@@ -34,7 +43,7 @@ def compare_versions(v1: str, v2: str) -> bool:
 
     v2 = v2.strip(operator)
 
-    return v1 + operator + v2
+    return ops[operator](version.parse(v1), version.parse(v2))
 
 
 def control_version(tool: str, project: bool) -> bool:
