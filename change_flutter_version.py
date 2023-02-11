@@ -1,6 +1,7 @@
 from packaging import version
 import os
 import operator
+from pprint import pprint
 
 path = os\
     .popen("where flutter")\
@@ -56,12 +57,12 @@ def get_flutters():
     for i in os.listdir(path):
         flutter_path = os.path.join(path, i, "bin", "flutter")
         # 'flutter': 'flutter version,dart version',
-        data[i] = f'{get_version("flutter", flutter_path)},{get_version("dart", flutter_path)}'
+        data[flutter_path] = f'{get_version("flutter", flutter_path)},{get_version("dart", flutter_path)}'
     return data
 
 
 if __name__ == '__main__':
-    print(get_flutters())
+    pprint(get_flutters())
     quit()
 
     print("flutter version:", get_version("flutter"))
