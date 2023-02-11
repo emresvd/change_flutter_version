@@ -17,9 +17,9 @@ ops = {
 }
 
 
-def get_version(tool: str) -> str:
+def get_version(tool: str, flutter: str = "flutter") -> str:
     tool = tool.capitalize()
-    output = os.popen('flutter --version').read()
+    output = os.popen(f"{flutter} --version").read()
     return output.split()[output.split().index(tool) + 1]
 
 
@@ -55,6 +55,7 @@ def get_flutters():
     data = {}
     for i in os.listdir(path):
         flutter_path = os.path.join(path, i, "bin", "flutter")
+        data[i] = get_version("flutter", flutter_path)
     return data
 
 
