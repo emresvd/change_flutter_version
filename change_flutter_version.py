@@ -55,6 +55,7 @@ def get_flutters():
     data = {}
     for i in os.listdir(path):
         flutter_path = os.path.join(path, i, "bin", "flutter")
+        # 'flutter': 'flutter version,dart version',
         data[i] = f'{get_version("flutter", flutter_path)},{get_version("dart", flutter_path)}'
     return data
 
