@@ -2,6 +2,7 @@ from packaging import version
 import os
 import operator
 
+path = r"C:\src"
 
 ops = {
     "<": operator.lt,
@@ -45,7 +46,18 @@ def compare_versions(v1: str, v2s: str) -> bool:
     return not False in output
 
 
+def get_flutters():
+    data = {}
+    for i in os.listdir(path):
+        with open(os.path.join(path, i, "version"), "r", encoding="utf-8") as f:
+            data[i] = f.read().strip()
+    return data
+
+
 if __name__ == '__main__':
+    print(get_flutters())
+    quit()
+
     print("flutter version:", get_version("flutter"))
     print("dart version:", get_version("dart"), "\n")
 
