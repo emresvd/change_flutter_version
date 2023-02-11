@@ -1,3 +1,4 @@
+from packaging import version
 import os
 
 
@@ -27,6 +28,11 @@ def get_project_version(tool: str) -> str:
             return line.replace(tool, "").strip().strip('"')
 
 
+def compare_versions(v1: str, v2: str) -> bool:
+    delete = [str(x) for x in range(10)] + ["."]
+    operator = "".join([x for x in v2 if not x in delete])
+
+
 def control_version(tool: str, project: bool) -> bool:
     tool = tool.lower()
 
@@ -43,3 +49,6 @@ if __name__ == '__main__':
 
     print("project flutter version: ", get_project_version("flutter"))
     print("project dart version: ", get_project_version("dart"))
+
+    print("compare versions: ", compare_versions(
+        get_version("flutter"), get_project_version("flutter")))
