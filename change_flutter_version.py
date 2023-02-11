@@ -32,6 +32,10 @@ def compare_versions(v1: str, v2: str) -> bool:
     delete = [str(x) for x in range(10)] + ["."]
     operator = "".join([x for x in v2 if not x in delete])
 
+    v2 = v2.strip(operator)
+
+    return v1 + operator + v2
+
 
 def control_version(tool: str, project: bool) -> bool:
     tool = tool.lower()
