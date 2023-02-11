@@ -68,4 +68,4 @@ if __name__ == '__main__':
     # print("project flutter version: ", get_project_version("flutter"))
     # print("project dart version: ", get_project_version("dart"))
 
-    print("compare versions: ", compare_versions("1.22.6", ">=1.16.0"))
+    print("compare versions: ", compare_versions("2.19.2", ">=2.18.4 <3.0.0"))
