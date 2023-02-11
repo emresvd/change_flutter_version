@@ -88,13 +88,13 @@ if __name__ == '__main__':
         a = 1
         for i in flutters:
             name = i.split(os.sep)[-3]
-            flutter_version = flutters[i].split(',')[0]
+            flutter_version_loop = flutters[i].split(',')[0]
             dart_version = flutters[i].split(',')[1]
 
             compare_flutter = compare_versions(get_version("flutter", i), get_project_version("flutter"))
             compare_dart = compare_versions(get_version("dart", i), get_project_version("dart"))
 
-            print(f"({a}) {name}:\n\tflutter version: {flutter_version}\n\tdart version: {dart_version}\n\n\tcompare flutter version: {compare_flutter}\n\tcompare dart version: {compare_dart}\n")
+            print(f"({a}) {name}:\n\tflutter version: {flutter_version_loop}\n\tdart version: {dart_version}\n\n\tcompare flutter version: {compare_flutter}\n\tcompare dart version: {compare_dart}\n")
             a += 1
         
         new_flutter = input("enter the number of the flutter version you want to use: ")
