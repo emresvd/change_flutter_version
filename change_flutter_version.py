@@ -46,9 +46,7 @@ def compare_versions(v1: str, v2s: str) -> bool:
     for v2 in v2s.split():
         delete = [str(x) for x in range(10)] + ["."]
         operator = "".join([x for x in v2 if not x in delete])
-
         v2 = v2.strip(operator)
-
         output.append(ops[operator](version.parse(v1), version.parse(v2)))
 
     return not False in output
@@ -64,14 +62,17 @@ def get_flutters():
 
 
 if __name__ == '__main__':
-    print("flutter version:", get_version("flutter"))
-    print("dart version:", get_version("dart"), "\n")
+    flutter_version = get_version("flutter")
+    dart_version = get_version("dart")
+
+    print("flutter version:", flutter_version)
+    print("dart version:", dart_version, "\n")
 
     print("project flutter version:", get_project_version("flutter"))
     print("project dart version:", get_project_version("dart"), "\n")
 
-    compare_flutter = compare_versions(get_version("flutter"), get_project_version("flutter"))
-    compare_dart = compare_versions(get_version("dart"), get_project_version("dart"))
+    compare_flutter = compare_versions(flutter_version, get_project_version("flutter"))
+    compare_dart = compare_versions(dart_version, get_project_version("dart"))
 
     print("compare flutter versions:", compare_flutter)
     print("compare dart versions:", compare_dart, "\n")
@@ -87,11 +88,12 @@ if __name__ == '__main__':
             compare_flutter = compare_versions(get_version("flutter", i), get_project_version("flutter"))
             compare_dart = compare_versions(get_version("dart", i), get_project_version("dart"))
 
-            print(f"({a}) {name}:\n\tflutter version: {flutter_version}\n\tdart version: {dart_version}\n\tcompare flutter version: {compare_flutter}\n\tcompare dart version: {compare_dart}\n")
+            print(f"({a}) {name}:\n\tflutter version: {flutter_version}\n\tdart version: {dart_version}\n\n\tcompare flutter version: {compare_flutter}\n\tcompare dart version: {compare_dart}\n")
             a += 1
         
         new_flutter = input("Enter the number of the flutter version you want to use: ")
         new_flutter = list(flutters.keys())[int(new_flutter) - 1]
-        
         print("new flutter path:", new_flutter)
 
+        os.rename(main_flutter_path, f"{main_flutter_path}-{get_version('flutter')}")
+        os.rename(new_flutter, main_flutter_path)
