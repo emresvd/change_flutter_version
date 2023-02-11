@@ -70,10 +70,8 @@ if __name__ == '__main__':
     print("project flutter version:", get_project_version("flutter"))
     print("project dart version:", get_project_version("dart"), "\n")
 
-    compare_flutter = compare_versions(get_version(
-        "flutter"), get_project_version("flutter"))
-    compare_dart = compare_versions(
-        get_version("dart"), get_project_version("dart"))
+    compare_flutter = compare_versions(get_version("flutter"), get_project_version("flutter"))
+    compare_dart = compare_versions(get_version("dart"), get_project_version("dart"))
 
     print("compare flutter versions:", compare_flutter)
     print("compare dart versions:", compare_dart, "\n")
@@ -86,14 +84,14 @@ if __name__ == '__main__':
             flutter_version = flutters[i].split(',')[0]
             dart_version = flutters[i].split(',')[1]
 
-            compare_flutter = compare_versions(get_version(
-                "flutter", i), get_project_version("flutter"))
-            compare_dart = compare_versions(get_version(
-                "dart", i), get_project_version("dart"))
+            compare_flutter = compare_versions(get_version("flutter", i), get_project_version("flutter"))
+            compare_dart = compare_versions(get_version("dart", i), get_project_version("dart"))
 
             print(f"({a}) {name}:\n\tflutter version: {flutter_version}\n\tdart version: {dart_version}\n\tcompare flutter version: {compare_flutter}\n\tcompare dart version: {compare_dart}\n")
             a += 1
-        new_flutter = input(
-            "Enter the number of the flutter version you want to use: ")
+        
+        new_flutter = input("Enter the number of the flutter version you want to use: ")
         new_flutter = list(flutters.keys())[int(new_flutter) - 1]
+        
         print("new flutter path:", new_flutter)
+
