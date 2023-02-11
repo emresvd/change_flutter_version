@@ -7,9 +7,7 @@ path = os\
     .read()\
     .splitlines()[0]\
     .strip()\
-    .replace(f"{os.sep}bin{os.sep}flutter", "")
-print(path)
-quit()
+    .replace(f"{os.sep}flutter{os.sep}bin{os.sep}flutter", "")
 
 ops = {
     "<": operator.lt,
