@@ -92,8 +92,11 @@ if __name__ == '__main__':
             a += 1
         
         new_flutter = input("Enter the number of the flutter version you want to use: ")
-        new_flutter = list(flutters.keys())[int(new_flutter) - 1]
+        new_flutter = list(flutters.keys())[int(new_flutter) - 1].replace(f"{os.sep}bin{os.sep}flutter", "")
         print("new flutter path:", new_flutter)
 
-        os.rename(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
-        os.rename(new_flutter, main_flutter_path)
+        print(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
+        print(new_flutter, main_flutter_path)
+
+        # os.rename(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
+        # os.rename(new_flutter, main_flutter_path)
