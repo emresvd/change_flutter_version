@@ -14,3 +14,7 @@ tool that fixes the version bug of the flutter projects you cloned
 8. enter the number of the flutter version you want to use
 9. your flutter version will have changed
 
+## build
+
+1. download requirements: `pip install -r requirements.txt`
+2. build project: `make`
