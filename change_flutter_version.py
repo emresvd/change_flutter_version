@@ -46,6 +46,7 @@ def compare_versions(v1: str, v2s: str) -> bool:
     for v2 in v2s.split():
         delete = [str(x) for x in range(10)] + ["."]
         operator = "".join([x for x in v2 if not x in delete])
+
         v2 = v2.strip(operator)
         output.append(ops[operator](version.parse(v1), version.parse(v2)))
 
