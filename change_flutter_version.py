@@ -2,12 +2,15 @@ from packaging import version
 import os
 import operator
 
-path = os\
+main_flutter_path = os\
     .popen("where flutter")\
     .read()\
     .splitlines()[0]\
     .strip()\
-    .replace(f"{os.sep}flutter{os.sep}bin{os.sep}flutter", "")
+    .replace(f"{os.sep}bin{os.sep}flutter", "")
+
+path = main_flutter_path\
+    .replace(f"{os.sep}flutter", "")
 
 ops = {
     "<": operator.lt,
@@ -67,20 +70,30 @@ if __name__ == '__main__':
     print("project flutter version:", get_project_version("flutter"))
     print("project dart version:", get_project_version("dart"), "\n")
 
-    compare_flutter = compare_versions(get_version("flutter"), get_project_version("flutter"))
-    compare_dart = compare_versions(get_version("dart"), get_project_version("dart"))
+    compare_flutter = compare_versions(get_version(
+        "flutter"), get_project_version("flutter"))
+    compare_dart = compare_versions(
+        get_version("dart"), get_project_version("dart"))
 
     print("compare flutter versions:", compare_flutter)
     print("compare dart versions:", compare_dart, "\n")
 
     if not compare_flutter or not compare_dart:
         flutters = get_flutters()
+        a = 1
         for i in flutters:
             name = i.split(os.sep)[-3]
             flutter_version = flutters[i].split(',')[0]
             dart_version = flutters[i].split(',')[1]
 
-            compare_flutter = compare_versions(get_version("flutter", i), get_project_version("flutter"))
-            compare_dart = compare_versions(get_version("dart", i), get_project_version("dart"))
+            compare_flutter = compare_versions(get_version(
+                "flutter", i), get_project_version("flutter"))
+            compare_dart = compare_versions(get_version(
+                "dart", i), get_project_version("dart"))
 
-            print(f"{name}:\n\tflutter version: {flutter_version}\n\tdart version: {dart_version}\n\tcompare flutter version: {compare_flutter}\n\tcompare dart version: {compare_dart}\n")
+            print(f"({a}) {name}:\n\tflutter version: {flutter_version}\n\tdart version: {dart_version}\n\tcompare flutter version: {compare_flutter}\n\tcompare dart version: {compare_dart}\n")
+            a += 1
+        new_flutter = input(
+            "Enter the number of the flutter version you want to use: ")
+        new_flutter = list(flutters.keys())[int(new_flutter) - 1]
+        print("new flutter path:", new_flutter)
