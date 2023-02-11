@@ -69,7 +69,10 @@ if __name__ == '__main__':
     print("project flutter version:", get_project_version("flutter"))
     print("project dart version:", get_project_version("dart"), "\n")
 
-    print("compare flutter versions:", compare_versions(
-        get_version("flutter"), get_project_version("flutter")))
-    print("compare dart versions:", compare_versions(
-        get_version("dart"), get_project_version("dart")), "\n")
+    compare_flutter = compare_versions(get_version(
+        "flutter"), get_project_version("flutter"))
+    compare_dart = compare_versions(
+        get_version("dart"), get_project_version("dart"))
+
+    print("compare flutter versions:", compare_flutter)
+    print("compare dart versions:", compare_dart, "\n")
