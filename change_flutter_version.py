@@ -55,7 +55,7 @@ def get_flutters():
     data = {}
     for i in os.listdir(path):
         flutter_path = os.path.join(path, i, "bin", "flutter")
-        data[i] = get_version("flutter", flutter_path)
+        data[i] = f'{get_version("flutter", flutter_path)},{get_version("dart", flutter_path)}'
     return data
 
 
@@ -76,3 +76,6 @@ if __name__ == '__main__':
 
     print("compare flutter versions:", compare_flutter)
     print("compare dart versions:", compare_dart, "\n")
+
+    if not compare_flutter or not compare_dart:
+        pass
