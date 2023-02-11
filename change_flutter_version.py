@@ -95,8 +95,5 @@ if __name__ == '__main__':
         new_flutter = list(flutters.keys())[int(new_flutter) - 1].replace(f"{os.sep}bin{os.sep}flutter", "")
         print("new flutter path:", new_flutter)
 
-        print(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
-        print(new_flutter, main_flutter_path)
-
-        # os.rename(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
-        # os.rename(new_flutter, main_flutter_path)
+        os.rename(main_flutter_path, f"{main_flutter_path}-{flutter_version}")
+        os.rename(new_flutter, main_flutter_path)
