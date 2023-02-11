@@ -2,7 +2,14 @@ from packaging import version
 import os
 import operator
 
-path = r"C:\src"
+path = os\
+    .popen("where flutter")\
+    .read()\
+    .splitlines()[0]\
+    .strip()\
+    .replace(f"{os.sep}bin{os.sep}flutter", "")
+print(path)
+quit()
 
 ops = {
     "<": operator.lt,
@@ -49,8 +56,7 @@ def compare_versions(v1: str, v2s: str) -> bool:
 def get_flutters():
     data = {}
     for i in os.listdir(path):
-        with open(os.path.join(path, i, "version"), "r", encoding="utf-8") as f:
-            data[i] = f.read().strip()
+        flutter_path = os.path.join(path, i, "bin", "flutter")
     return data
 
 
