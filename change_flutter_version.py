@@ -56,7 +56,7 @@ def compare_versions(v1: str, v2s: str) -> bool:
     return not False in output
 
 
-def get_flutters():
+def get_flutters() -> dict:
     data = {}
     for i in os.listdir(path):
         flutter_path = os.path.join(path, i, "bin", "flutter")
